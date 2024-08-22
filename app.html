@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Input with Geolocation and Autocomplete</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA881rlVC8nR8-R1D85a55ws2XDmADkSes&libraries=places"></script>
+</head>
+<style>
+    body {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    button {
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #3366ff;
+        color: white;
+        border-radius: 12px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input#autocomplete {
+        font-size: 14px;
+        width: 66%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 2px solid #3366ff;
+        border-radius: 12px;
+        display: block;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        float: left;
+    }
+
+    button:hover {
+        background-color: darkblue;
+    }
+
+    #map {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 360px;
+        width: 90%;
+        margin-top: 20px;
+        border: 2px solid #3366ff;
+        border-radius: 12px;
+    }
+
+    .slide-button {
+        margin-top: 10px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .current-location-button {
+        margin-left: 5%;
+        width: 25%;
+        float: left;
+    }
+
+    .panel {
+        position: absolute;
+        width: 100%;
+    }
+
+
+    .second-panel-input {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .pro-box {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        background-color: lightgreen;
+        border: 2px solid green;
+        border-radius: 12px;
+        padding: 5px;
+        margin-bottom: -5px;
+        padding-left: 10px;
+        position: relative;
+    }
+
+    .con-box {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        background-color: lightpink;
+        border: 2px solid red;
+        border-radius: 12px;
+        padding: 5px;
+        margin-bottom: -5px;
+        padding-left: 10px;
+    }
+
+    .plus-icon {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        left: -16px;
+        top: 16px;
+        margin-top: -16px;
+        z-index: 1;
+    }
+
+    .image-icon {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .rating {
+        float: left;
+        margin-left: 10px;
+        margin-top: 12px;
+        font-size: 28px;
+        font-weight: bold;
+        color: darkblue;
+        font-family: Arial, sans-serif;
+        border: 2px solid #3366ff;
+        background-color:azure;
+        border-radius: 12px;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-right: 20px;
+    }
+
+    .distance {
+        float: left;
+        margin-left: 10px;
+        margin-top: 28px;
+        font-size: 14px;
+        font-weight: bold;
+        color: darkblue;
+        font-family: Arial, sans-serif;
+        margin-right: 10px;
+    }
+
+    .business-box {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 40%;
+        margin-left: 20px;
+        border: 2px solid #3366ff;
+        background-color:azure;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 10px;
+        float: left;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .business-box:hover {
+        transform: scale(1.025);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+    }
+
+    .business-box-title {
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #99aaff;
+        border: 2px solid #3366ff;
+        color: darkblue;
+        border-radius: 12px;
+        padding: 10px 20px;
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .business-panels {
+        margin-left: 5%;
+    }
+
+    .map_panel {
+        display: block;
+    }
+    .business_panel {
+        display: none;
+        visibility: hidden;
+    }
+
+</style>
+
+<body>
+
+
+    <div id="map_panel" class="panel" style="display: block;">
+        <div>
+            <button class="current-location-button" onclick="getCurrentLocation()">Use Current Location</button>
+            <input id="autocomplete" type="text" placeholder="Enter an address" />
+        </div>
+        <div id="map"></div>
+        <div>
+            <button class="slide-button" onclick="goToBusinessPage()">Show me the restaurants!</button>
+        </div>    
+    </div>
+
+    <div id="business_panel" class="panel" style="display: none;">
+        <div class="business-panels">
+            <div id="business-row-1"></div>
+            <div id="business-row-2"></div>
+        </div>
+        <button class="slide-button" onclick="goToMapPage()">Take me back</button>
+    </div>
+    
+    <script src="app_script.js"></script>
+    
+</body>
+</html>

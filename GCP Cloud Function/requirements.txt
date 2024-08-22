@@ -1,0 +1,4 @@
+functions-framework==3.*
+requests
+openai
+python-dotenv>=1.0.0

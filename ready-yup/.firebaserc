@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "chris-qu-6597d"
+  },
+  "targets": {
+    "chris-qu-6597d": {
+      "hosting": {
+        "ready-yup": [
+          "ready-yup"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
