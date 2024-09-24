@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = "AIzaSyA881rlVC8nR8-R1D85a55ws2XDmADkSes"
+API_KEY = {REDACTED}
 OPENAI_API_KEY=os.getenv("OPENAPI_KEY")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
